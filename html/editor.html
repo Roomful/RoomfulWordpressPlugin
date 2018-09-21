@@ -1,0 +1,143 @@
+<div id="roomful_insert_popup" style="display:none">
+    <div id="roomful-editor-popup">
+        <div class="container">
+            <input id="roomful-embed-code" type="hidden" value=""/>
+            <input id="roomful-short-code" type="hidden" value=""/>
+
+            <div class="logo"></div>
+
+            <div class="row">
+
+                <div class="col">
+                    <div class="input-field url">
+                        <label class="input-group" for="roomful-url">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text">Url</span>
+                                </span>
+                            <span class="input-hint">Url to the shared room, example: https://my.roomful.net/#/room/55mx098565068t</span>
+                            <span class="form-input">
+                                    <input type="text" class="form-control" id="roomful-url"
+                                           placeholder="https://my.roomful.net/#/room/55mx098565068t"/>
+                                </span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row options-1">
+
+                <div class="col">
+                    <div class="input-field width">
+                        <label class="input-group" for="roomful-width">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text">Width</span>
+                                </span>
+                            <span class="input-hint">Frame width in px</span>
+                            <span class="form-input">
+                                    <input type="number" class="form-control" id="roomful-width" placeholder="960"/>
+                                </span>
+                            <span class="input-group-after">
+                                    <span class="input-group-text">px</span>
+                                </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="input-field height">
+                        <label class="input-group" for="roomful-height">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text">Height</span>
+                                </span>
+                            <span class="input-hint">Frame height in px</span>
+                            <span class="form-input">
+                                    <input type="number" class="form-control" id="roomful-height" placeholder="620"/>
+                                </span>
+                            <span class="input-group-after">
+                                    <span class="input-group-text">px</span>
+                                </span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row options-2">
+
+                <div class="col">
+                    <div class="input-field switch-autoplay">
+                            <span class="input-group-prepend">
+                                <span class="input-group-text">Autoplay</span>
+                            </span>
+                        <span class="input-hint">Autoplay on load</span>
+                        <label class="switch input-group" for="roomful-autoplay-switch">
+                            <input type="checkbox" id="roomful-autoplay-switch">
+                            <span class="slider round"/>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="input-field switch-auth">
+                            <span class="input-group-prepend">
+                                <span class="input-group-text">Need auth</span>
+                            </span>
+                        <span class="input-hint">Need auth at start?</span>
+                        <label class="switch input-group" for="roomful-auth-switch">
+                            <input type="checkbox" id="roomful-auth-switch">
+                            <span class="slider round"/>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="input-field switch-video-chat">
+                            <span class="input-group-prepend">
+                                <span class="input-group-text">Video Chat</span>
+                            </span>
+                        <span class="input-hint">Auto join to video chat</span>
+                        <label class="switch input-group" for="roomful-chat-switch">
+                            <input type="checkbox" id="roomful-chat-switch">
+                            <span class="slider round"/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col">
+                    <div class="input-field youtube">
+                        <label class="input-group" for="roomful-youtube">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text">Youtube</span>
+                                </span>
+                            <span class="input-hint">Youtube video link, to show it on the loader</span>
+                            <span class="form-input">
+                                    <input type="text" class="form-control" id="roomful-youtube"/>
+                                </span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col">
+                    <div class="embed-code">
+                        <button id="roomful-add-embed-link" class="button">Insert embed link</button>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="short-code">
+                        <button id="roomful-add-short-code" class="button">Insert shortcode</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
