@@ -67,7 +67,7 @@ function roomful_shortCode($attributes, $content = '')
             . ($attributes['autoChat'] ? '/chat' : '')
             . '" allow="autoplay; microphone; camera" frameborder="0"
          width="' . esc_attr($attributes['width']) . '" height="' . esc_attr($attributes['height']) . '"></iframe>';
-    } else if ($attributes['type'] === 'link' && $content === '') {
+    } else if ($attributes['type'] === 'image') {
         $embedCode = '<a href="https://' . esc_attr($attributes['host']) . '.roomful.net/'
             . ($query !== '' ? $query : '') . '#/room/' . esc_attr($attributes['room'])
             . ($attributes['autoChat'] ? '/chat' : '')
@@ -75,7 +75,7 @@ function roomful_shortCode($attributes, $content = '')
             . '<img src="https://demo.roomful.co:3443/api/v0/resource/thumbnail/room/' .
             esc_attr($attributes['room']) . '" width="' . esc_attr($attributes['width'])
             . '" height="' . esc_attr($attributes['height']) . '"/></a>';
-    } else if ($attributes['type'] === 'link' && $content !== '') {
+    } else if ($attributes['type'] === 'text' && $content !== '') {
         $embedCode = '<a href="https://' . esc_attr($attributes['host']) . '.roomful.net/'
             . ($query !== '' ? $query : '') . '#/room/' . esc_attr($attributes['room'])
             . ($attributes['autoChat'] ? '/chat' : '')

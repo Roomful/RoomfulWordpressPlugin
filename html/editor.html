@@ -4,7 +4,15 @@
             <input id="roomful-embed-code" type="hidden" value=""/>
             <input id="roomful-short-code" type="hidden" value=""/>
 
-            <div class="logo"></div>
+            <div class="header-row">
+                <div class="logo"></div>
+
+                <div class="type-mode" role="group">
+                    <div class="button-switch iframe active">iFrame</div>
+                    <div class="button-switch image">Image</div>
+                    <div class="button-switch text">Text</div>
+                </div>
+            </div>
 
             <div class="row">
 
@@ -25,7 +33,7 @@
 
             </div>
 
-            <div class="row options-1">
+            <div class="row options-1 size-input">
 
                 <div class="col">
                     <div class="input-field width">
@@ -63,6 +71,24 @@
 
             </div>
 
+            <div class="row options-1 anchor-input" style="display: none;">
+
+                <div class="col">
+                    <div class="input-field anchor">
+                        <label class="input-group" for="roomful-anchor">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text">Text</span>
+                                </span>
+                            <span class="input-hint">The text, to show it in the link</span>
+                            <span class="form-input">
+                                    <input type="text" class="form-control" id="roomful-anchor"/>
+                                </span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
             <div class="row options-2">
 
                 <div class="col">
@@ -73,7 +99,7 @@
                         <span class="input-hint">Autoplay on load</span>
                         <label class="switch input-group" for="roomful-autoplay-switch">
                             <input type="checkbox" id="roomful-autoplay-switch">
-                            <span class="slider round"/>
+                            <span class="slider round"></span>
                         </label>
                     </div>
                 </div>
@@ -86,7 +112,7 @@
                         <span class="input-hint">Need auth at start?</span>
                         <label class="switch input-group" for="roomful-auth-switch">
                             <input type="checkbox" id="roomful-auth-switch">
-                            <span class="slider round"/>
+                            <span class="slider round"></span>
                         </label>
                     </div>
                 </div>
@@ -99,7 +125,7 @@
                         <span class="input-hint">Auto join to video chat</span>
                         <label class="switch input-group" for="roomful-chat-switch">
                             <input type="checkbox" id="roomful-chat-switch">
-                            <span class="slider round"/>
+                            <span class="slider round"></span>
                         </label>
                     </div>
                 </div>
@@ -126,13 +152,13 @@
             <div class="row">
 
                 <div class="col">
-                    <div class="embed-code">
+                    <div class="result-button embed-code">
                         <button id="roomful-add-embed-link" class="button">Insert embed link</button>
                     </div>
                 </div>
 
                 <div class="col">
-                    <div class="short-code">
+                    <div class="result-button short-code">
                         <button id="roomful-add-short-code" class="button">Insert shortcode</button>
                     </div>
                 </div>

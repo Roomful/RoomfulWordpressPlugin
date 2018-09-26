@@ -9,12 +9,15 @@
     this.ytVideo = '';
     this.embedCode = '';
     this.shortCode = '';
+    this.anchorText = 'Go to Roomful';
     this.autoPlay = false;
     this.needAuth = false;
     this.autoChat = false;
 
     this.addCode = function (type) {
         if (type === undefined) type = 'embedLink';
+
+        this.generateFrameCode();
 
         try {
             if ((type === 'embedLink' && this.embedCode !== '') || (type === 'shortCode' && this.shortCode !== '')) {
@@ -68,8 +71,10 @@ RoomfulEditor.prototype.generateFrameCode = function () {
     this.embedCode = 'https://' + this.host + '/' + (query !== '' ? query + '/' : '')
         + '#/room/' + this.room + (this.autoChat ? '/chat' : '');
 
+    console.warn(this.type);
+
     this.shortCode = '[roomful'
-        + (this.type !== 'iframe' ? ' t="' + this.type + '"' : '')
+        + (this.type === 'image' ? ' type="image"' : '')
         + (mHost !== 'my' ? ' host="' + mHost + '"' : '')
         + (' room="' + this.room + '"')
         + (this.autoPlay ? ' autoPlay="true"' : '')
@@ -79,14 +84,14 @@ RoomfulEditor.prototype.generateFrameCode = function () {
         + (this.ytVideo ? ' ytVideo="' + this.ytVideo + '"' : '')
         + (' width="' + this.width + '"')
         + (' height="' + this.height + '"')
-        + ']';
+        + ']' + (this.type === 'text' ? this.anchorText + '[/roomful]' : '');
 };
 
 RoomfulEditor.prototype.update = function () {
     this.code = this.generateFrameCode();
 
     jQuery('#roomful-embed-code').value = this.embedCode;
-    jQuery('#roomful-short-code').value = this.embedCode;
+    jQuery('#roomful-short-code').value = this.shortCode;
 };
 
 RoomfulEditor.OnOpenModalWindow = function () {
@@ -95,9 +100,13 @@ RoomfulEditor.OnOpenModalWindow = function () {
     jQuery('#roomful-width').value = this.width;
     jQuery('#roomful-height').value = this.height;
 
+    jQuery('#roomful-anchor')[0].value = this.anchorText;
+
     jQuery('#roomful-autoplay-switch').checked = this.autoPlay;
     jQuery('#roomful-auth-switch').checked = this.needAuth;
     jQuery('#roomful-chat-switch').checked = this.autoChat;
+
+    $('#roomful-editor-popup').removeClass('image').removeClass('iframe').removeClass('text').addClass(this.type);
 
     this.update();
 };
@@ -106,7 +115,8 @@ RoomfulEditor.resizeModal = function () {
     var $e = jQuery(document).find('#TB_window');
 
     if ($e.find('#roomful-editor-popup')) {
-        $e.width(780).height(470).css('margin-left', -780 / 2).css('margin-top', 470 / 2);
+        $e.width(780).height(470).css('margin-left', -780 / 2).css('margin-top', (window.innerHeight - 470) / 2);
+        return false;
     }
 };
 
@@ -275,6 +285,51 @@ jQuery(document).on('ready', function () {
             if (needUpdate) this.update();
         } catch (e) {
         }
+    }.bind(roomful));
+
+    jQuery(document.body).on('change', '#roomful-anchor', function (event) {
+        event.preventDefault();
+
+        var text = jQuery('#roomful-anchor')[0].value;
+        console.log(text);
+        try {
+            var needUpdate = false;
+
+            if (text.trim().length > 0) {
+                this.anchorText = text.trim();
+                needUpdate = true;
+            } else {
+                this.anchorText = 'Go to Roomful';
+                needUpdate = true;
+            }
+
+            if (needUpdate) this.update();
+        } catch (e) {
+            console.warn(e);
+        }
+    }.bind(roomful));
+
+    jQuery(document.body).on('click', '#roomful-editor-popup .button-switch', function (event) {
+        event.preventDefault();
+
+        if (event.currentTarget.className.split(' ').indexOf('iframe') >= 0) {
+            this.type = 'iframe';
+            $('#roomful-editor-popup .row.anchor-input').hide();
+            $('#roomful-editor-popup .row.size-input, #roomful-editor-popup .embed-code').show();
+        } else if (event.currentTarget.className.split(' ').indexOf('image') >= 0) {
+            this.type = 'image';
+            $('#roomful-editor-popup .row.anchor-input, #roomful-editor-popup .embed-code').hide();
+            $('#roomful-editor-popup .row.size-input').show();
+        } else {
+            this.type = 'text';
+            $('#roomful-editor-popup .row.size-input').hide();
+            $('#roomful-editor-popup .row.size-input, #roomful-editor-popup .embed-code').hide();
+            $('#roomful-editor-popup .row.anchor-input').show();
+        }
+
+        $('#roomful-editor-popup').removeClass('image').removeClass('iframe').removeClass('text').addClass(this.type);
+        $('#roomful-editor-popup .button-switch').removeClass('active');
+        $('#roomful-editor-popup .button-switch.' + this.type).addClass('active');
     }.bind(roomful));
 });
 
