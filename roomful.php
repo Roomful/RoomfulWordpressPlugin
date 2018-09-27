@@ -3,7 +3,7 @@
 Plugin Name: Roomful
 Plugin URI: http://github.com/Roomful
 Description: Roomful plugin for wordpress
-Version: 0.0.1
+Version: 0.0.3
 Author: Dimitriy Kalugin
 Author URI: http://github.com/devinterx
 Text Domain: roomful
@@ -20,13 +20,20 @@ function _get_plugin_url()
         : plugins_url(basename(dirname(__FILE__)));
 }
 
+function roomful_scripts_enqueue()
+{
+
+    wp_register_style('roomful-frontend', _get_plugin_url() . '/css/roomful.css', array(), '0.0.3');
+    wp_enqueue_style('roomful-frontend');
+}
+
 function roomful_editor_scripts_enqueue()
 {
     if (stripos($_SERVER['REQUEST_URI'], 'post.php') === FALSE
         && stripos($_SERVER['REQUEST_URI'], 'post-new.php') === FALSE) return;
 
-    wp_register_script('roomful', _get_plugin_url() . '/js/editor.js', array('jquery'), '0.0.1');
-    wp_register_style('roomful', _get_plugin_url() . '/css/editor.css', array(), '0.0.1');
+    wp_register_script('roomful', _get_plugin_url() . '/js/editor.js', array('jquery'), '0.0.3');
+    wp_register_style('roomful', _get_plugin_url() . '/css/editor.css', array(), '0.0.3');
 
     wp_enqueue_script('roomful');
     wp_enqueue_style('awesome-font', 'https://use.fontawesome.com/releases/v5.1.1/css/all.css', array(), '5.1.1');
@@ -61,24 +68,27 @@ function roomful_shortCode($attributes, $content = '')
     }
 
     $embedCode = '';
-    if ($attributes['type'] === 'iframe') {
+    if ($attributes['type'] === 'iframe' && $content === '') {
         $embedCode = '<iframe src="https://' . esc_attr($attributes['host']) . '.roomful.net/'
             . ($query !== '' ? $query : '') . '#/room/' . esc_attr($attributes['room'])
-            . ($attributes['autoChat'] ? '/chat' : '')
+            . ($attributes['autoChat'] === 'true' ? '/chat' : '')
             . '" allow="autoplay; microphone; camera" frameborder="0"
          width="' . esc_attr($attributes['width']) . '" height="' . esc_attr($attributes['height']) . '"></iframe>';
     } else if ($attributes['type'] === 'image') {
+        $embedCode = '<a class="roomful-image-link" href="https://' . esc_attr($attributes['host']) . '.roomful.net/'
+            . ($query !== '' ? $query : '') . '#/room/' . esc_attr($attributes['room'])
+            . ($attributes['autoChat'] === 'true' ? '/chat' : '')
+            . '" target="_blank" title="Open Roomful" style="'
+            . 'width:' . esc_attr($attributes['width']) . 'px;'
+            . 'height:' . esc_attr($attributes['height']) . 'px;">'
+            . "<div class=\"roomful-image-cover\" style=\"background: url('https://demo.roomful.co:3443/api/v0/resource/thumbnail/room/" . esc_attr($attributes['room']) . "') 50% 50% / cover no-repeat rgb(241, 237, 231);"
+            . 'width:' . esc_attr($attributes['width']) . 'px;'
+            . 'height:' . esc_attr($attributes['height']) . 'px;"></div>'
+            . '<div class="roomful-play-button"><span class="play"><span class="inner-wrap"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600px" height="800px" x="0px" y="0px" viewBox="0 0 600 800" enable-background="new 0 0 600 800" xml:space="preserve"><path fill="none" d="M0-1.79v800L600,395L0-1.79z"></path></svg></span></span></div><div class="roomful-image-logo"></div></a>';
+    } else if ($content !== '') {
         $embedCode = '<a href="https://' . esc_attr($attributes['host']) . '.roomful.net/'
             . ($query !== '' ? $query : '') . '#/room/' . esc_attr($attributes['room'])
-            . ($attributes['autoChat'] ? '/chat' : '')
-            . '" target="_blank" title="Open Roomful">'
-            . '<img src="https://demo.roomful.co:3443/api/v0/resource/thumbnail/room/' .
-            esc_attr($attributes['room']) . '" width="' . esc_attr($attributes['width'])
-            . '" height="' . esc_attr($attributes['height']) . '"/></a>';
-    } else if ($attributes['type'] === 'text' && $content !== '') {
-        $embedCode = '<a href="https://' . esc_attr($attributes['host']) . '.roomful.net/'
-            . ($query !== '' ? $query : '') . '#/room/' . esc_attr($attributes['room'])
-            . ($attributes['autoChat'] ? '/chat' : '')
+            . ($attributes['autoChat'] === 'true' ? '/chat' : '')
             . '" target="_blank" title="Open Roomful">' . $content . '</a>';
     }
 
@@ -114,7 +124,7 @@ function wp_embed_handler_roomful($matches, $attributes, $url, $raw)
 {
     $query = $matches[2] ? esc_attr(stripcslashes($matches[2])) : '';
 
-    //var_dump($query);
+    // var_dump($query);
 
     $href = "https://" . esc_attr($matches[1]) . ".roomful.net" . $query;
     $embed = '<iframe src="' . $href
@@ -130,7 +140,7 @@ function roomful_media_menu($tabs)
 
 add_filter('media_upload_tabs', 'roomful_media_menu');
 */
-
+add_action('wp_enqueue_scripts', 'roomful_scripts_enqueue');
 add_action('admin_enqueue_scripts', 'roomful_editor_scripts_enqueue');
 add_action('admin_footer', 'roomful_insert_popup', 100);
 add_action('media_buttons', 'roomful_add_media_button', 10);

@@ -415,7 +415,7 @@
     margin: 26px 0 0 40px;
 }
 
-#roomful-editor-popup .type-mode .button-switch {
+#roomful-editor-popup .type-mode .roomful-button-switch {
     position: relative;
     float: left;
     color: #333;
@@ -441,35 +441,35 @@
     border-radius: 4px;
 }
 
-#roomful-editor-popup .type-mode .button-switch:hover:not(.active) {
+#roomful-editor-popup .type-mode .roomful-button-switch:hover:not(.active) {
     background-color: #ccc;
 }
 
-#roomful-editor-popup .type-mode .button-switch.active {
+#roomful-editor-popup .type-mode .roomful-button-switch.active {
     background-color: #0085ba;
     color: #fff;
 }
 
-#roomful-editor-popup .type-mode > .button-switch:first-child {
+#roomful-editor-popup .type-mode > .roomful-button-switch:first-child {
     margin-left: 0;
     border-left: 1px solid #ccc;
 }
 
-#roomful-editor-popup .type-mode > .button-switch:last-child {
+#roomful-editor-popup .type-mode > .roomful-button-switch:last-child {
     border-right: 1px solid #ccc;
 }
 
-#roomful-editor-popup .type-mode > .button-switch:first-child:not(:last-child) {
+#roomful-editor-popup .type-mode > .roomful-button-switch:first-child:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-#roomful-editor-popup .type-mode > .button-switch:last-child:not(:first-child) {
+#roomful-editor-popup .type-mode > .roomful-button-switch:last-child:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-#roomful-editor-popup .type-mode > .button-switch:not(:first-child):not(:last-child) {
+#roomful-editor-popup .type-mode > .roomful-button-switch:not(:first-child):not(:last-child) {
     border-radius: 0;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;

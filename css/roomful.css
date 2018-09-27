@@ -1,0 +1,105 @@
+.roomful-image-link {
+    position: relative;
+    display: block;
+    background-color: #5a4f4d;
+    overflow: hidden;
+    color: #eee;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.roomful-image-link:active,
+.roomful-image-link:visited,
+.roomful-image-link:focus,
+.roomful-image-link:focus-within,
+.roomful-image-link:hover {
+    color: #eee !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.roomful-image-link .roomful-image-cover {
+    position: relative;
+    background: #f1ede7 url('loading-bg.png') 50% 50% no-repeat;
+    background-size: cover;
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+}
+
+.roomful-image-link .roomful-image-logo {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 198px;
+    height: 51px;
+    background: url('logo.png') 0 0 no-repeat;
+}
+
+.roomful-image-link .roomful-play-button {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    display: inline-block;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.roomful-image-link .roomful-play-button:before {
+    display: block;
+    position: absolute;
+    content: ' ';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 6px solid #eee;
+    z-index: 10;
+    border-radius: 200px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1) 0s;
+    -webkit-transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1) 0s;
+}
+
+.roomful-image-link .roomful-play-button:hover:before {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    opacity: 0.4;
+}
+
+.roomful-image-link .roomful-play-button:hover span.play {
+    transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+}
+
+.roomful-image-link .roomful-play-button span.play {
+    display: block;
+    height: 100%;
+    width: 100%;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1) 0s;
+    -webkit-transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1) 0s;
+}
+
+.roomful-image-link .roomful-play-button svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: 2px;
+    -ms-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translateY(-50%) translateX(-50%);
+}
+
+.roomful-image-link .roomful-play-button svg path {
+    fill: #eee;
+}
+

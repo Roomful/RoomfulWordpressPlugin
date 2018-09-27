@@ -82,8 +82,8 @@ RoomfulEditor.prototype.generateFrameCode = function () {
         + (this.needAuth ? ' needAuth="true"' : '')
         + (this.autoChat ? ' autoChat="true"' : '')
         + (this.ytVideo ? ' ytVideo="' + this.ytVideo + '"' : '')
-        + (' width="' + this.width + '"')
-        + (' height="' + this.height + '"')
+        + (this.type !== 'text' ? (' width="' + this.width + '"') : '')
+        + (this.type !== 'text' ? (' height="' + this.height + '"') : '')
         + ']' + (this.type === 'text' ? this.anchorText + '[/roomful]' : '');
 };
 
@@ -125,7 +125,7 @@ RoomfulEditor.resizeModalAsync = function () {
 };
 
 jQuery(document).on('ready', function () {
-    if (window.location.toString().indexOf('https://') === 0) {
+    if (window.location.toString().indexOf('https://') === 0 && window._EPYTA_ !== undefined && window._EPYTA_.wpajaxurl !== undefined) {
         window._EPYTA_.wpajaxurl = window._EPYTA_.wpajaxurl.replace('http://', 'https://');
     }
 
@@ -309,8 +309,10 @@ jQuery(document).on('ready', function () {
         }
     }.bind(roomful));
 
-    jQuery(document.body).on('click', '#roomful-editor-popup .button-switch', function (event) {
+    jQuery(document.body).on('click', '.roomful-button-switch', function (event) {
         event.preventDefault();
+
+        console.log('bu');
 
         if (event.currentTarget.className.split(' ').indexOf('iframe') >= 0) {
             this.type = 'iframe';
@@ -328,8 +330,8 @@ jQuery(document).on('ready', function () {
         }
 
         $('#roomful-editor-popup').removeClass('image').removeClass('iframe').removeClass('text').addClass(this.type);
-        $('#roomful-editor-popup .button-switch').removeClass('active');
-        $('#roomful-editor-popup .button-switch.' + this.type).addClass('active');
+        $('#roomful-editor-popup .roomful-button-switch').removeClass('active');
+        $('#roomful-editor-popup .roomful-button-switch.' + this.type).addClass('active');
     }.bind(roomful));
 });
 
