@@ -33,7 +33,7 @@
 #roomful-editor-popup .roomful-col {
     position: relative;
     float: left;
-    margin: 0 10px;
+    margin: 13px 10px;
 }
 
 #roomful-editor-popup .input-field {
@@ -47,7 +47,7 @@
     height: 48px;
 }
 
-#roomful-editor-popup .input-group {
+#roomful-editor-popup .roomful-input-group {
     position: relative;
     display: table;
     border-collapse: separate;
@@ -59,7 +59,7 @@
     height: 35px;
 }
 
-#roomful-editor-popup .input-group-prepend {
+#roomful-editor-popup .roomful-input-group-prepend {
     width: 1%;
     white-space: nowrap;
     vertical-align: middle;
@@ -77,7 +77,7 @@
     border-radius: 4px 0 0 4px;
 }
 
-#roomful-editor-popup .input-group-after {
+#roomful-editor-popup .roomful-input-group-after {
     width: 1%;
     white-space: nowrap;
     vertical-align: middle;
@@ -95,7 +95,7 @@
     border-radius: 0 4px 4px 0;
 }
 
-#roomful-editor-popup .form-input {
+#roomful-editor-popup .roomful-form-input {
     display: table-cell;
     position: relative;
     border: 1px solid #ccc;
@@ -110,7 +110,7 @@
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-#roomful-editor-popup .form-input input {
+#roomful-editor-popup .roomful-form-input input {
     position: relative;
     z-index: 2;
     float: left;
@@ -131,7 +131,7 @@
     outline: none;
 }
 
-#roomful-editor-popup .input-group .input-hint {
+#roomful-editor-popup .roomful-input-group .roomful-input-hint {
     position: absolute;
     display: inline-block;
     left: 10px;
@@ -159,7 +159,7 @@
     display: none;
 }
 
-#roomful-editor-popup .slider {
+#roomful-editor-popup .roomful-slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -181,7 +181,7 @@
     line-height: 25px;
 }
 
-#roomful-editor-popup .slider:before {
+#roomful-editor-popup .roomful-slider:before {
     position: absolute;
     content: "\f00d";
     color: #982323;
@@ -194,7 +194,7 @@
     transition: .4s;
 }
 
-#roomful-editor-popup input:checked + .slider:before {
+#roomful-editor-popup input:checked + .roomful-slider:before {
     content: "\f00c";
     color: #0da221;
     -webkit-transform: translateX(26px);
@@ -202,54 +202,54 @@
     transform: translateX(26px);
 }
 
-#roomful-editor-popup .slider.round {
+#roomful-editor-popup .roomful-slider.round {
     border-radius: 0 4px 4px 0;
     border: 1px solid #ccc;
     border-left: none;
 }
 
-#roomful-editor-popup .slider.round:before {
+#roomful-editor-popup .roomful-slider.round:before {
     border-radius: 4px;
     border: 1px solid #ccc;
 }
 
-#roomful-editor-popup .input-field.url {
+#roomful-editor-popup .roomful-input-field.url {
     width: 600px;
 }
 
-#roomful-editor-popup .input-field.youtube {
+#roomful-editor-popup .roomful-input-field.youtube {
     width: 600px;
 }
 
-#roomful-editor-popup .input-field.width,
-#roomful-editor-popup .input-field.height {
+#roomful-editor-popup .roomful-input-field.width,
+#roomful-editor-popup .roomful-input-field.height {
     width: 186px;
 }
 
-#roomful-editor-popup .input-field.anchor {
+#roomful-editor-popup .roomful-input-field.anchor {
     width: 600px;
 }
 
-#roomful-editor-popup .input-field.width .form-input,
-#roomful-editor-popup .input-field.height .form-input {
+#roomful-editor-popup .roomful-input-field.width .roomful-form-input,
+#roomful-editor-popup .roomful-input-field.height .roomful-form-input {
     border-right: none;
     border-radius: 0;
 }
 
-#roomful-editor-popup .input-field.url .input-group .input-hint,
-#roomful-editor-popup .input-field.anchor .input-group .input-hint,
-#roomful-editor-popup .input-field.youtube .input-group .input-hint {
+#roomful-editor-popup .roomful-input-field.url .roomful-input-group .roomful-input-hint,
+#roomful-editor-popup .roomful-input-field.anchor .roomful-input-group .roomful-input-hint,
+#roomful-editor-popup .roomful-input-field.youtube .roomful-input-group .roomful-input-hint {
     width: 574px;
 }
 
-#roomful-editor-popup .input-field.width .input-group .input-hint,
-#roomful-editor-popup .input-field.height .input-group .input-hint {
+#roomful-editor-popup .roomful-input-field.width .roomful-input-group .roomful-input-hint,
+#roomful-editor-popup .roomful-input-field.height .roomful-input-group .roomful-input-hint {
     width: 146px;
 }
 
-#roomful-editor-popup .input-field.switch-autoplay .input-group-prepend,
-#roomful-editor-popup .input-field.switch-auth .input-group-prepend,
-#roomful-editor-popup .input-field.switch-video-chat .input-group-prepend {
+#roomful-editor-popup .roomful-input-field.switch-autoplay .roomful-input-group-prepend,
+#roomful-editor-popup .roomful-input-field.switch-auth .roomful-input-group-prepend,
+#roomful-editor-popup .roomful-input-field.switch-video-chat .roomful-input-group-prepend {
     float: left;
     display: block;
     position: relative;
@@ -260,13 +260,13 @@
     font-weight: normal;
 }
 
-#roomful-editor-popup .input-field.switch-autoplay .input-hint,
-#roomful-editor-popup .input-field.switch-auth .input-hint,
-#roomful-editor-popup .input-field.switch-video-chat .input-hint {
+#roomful-editor-popup .roomful-input-field.switch-autoplay .roomful-input-hint,
+#roomful-editor-popup .roomful-input-field.switch-auth .roomful-input-hint,
+#roomful-editor-popup .roomful-input-field.switch-video-chat .roomful-input-hint {
     position: absolute;
     display: inline-block;
     left: 10px;
-    bottom: -7px;
+    bottom: -15px;
     background: #eeeeee;
     color: #757575;
     border-radius: 0 0 4px 4px;
@@ -279,13 +279,13 @@
     font-size: 12px;
 }
 
-#roomful-editor-popup .input-field.switch-auth .input-group-prepend,
-#roomful-editor-popup .input-field.switch-video-chat .input-group-prepend {
+#roomful-editor-popup .roomful-input-field.switch-auth .roomful-input-group-prepend,
+#roomful-editor-popup .roomful-input-field.switch-video-chat .roomful-input-group-prepend {
     width: 86px;
 }
 
-#roomful-editor-popup .input-field.switch-auth .input-hint,
-#roomful-editor-popup .input-field.switch-video-chat .input-hint {
+#roomful-editor-popup .roomful-input-field.switch-auth .roomful-input-hint,
+#roomful-editor-popup .roomful-input-field.switch-video-chat .roomful-input-hint {
     width: 122px;
 }
 
@@ -301,15 +301,15 @@
     margin-left: 50px;
 }
 
-#roomful-editor-popup .roomful-row.options-2 .input-field {
+#roomful-editor-popup .roomful-row.options-2 .roomful-input-field {
     width: 146px;
 }
 
-#roomful-editor-popup .input-field.code .input-hint {
+#roomful-editor-popup .roomful-input-field.code .roomful-input-hint {
     width: 574px;
 }
 
-#roomful-editor-popup .form-input textarea {
+#roomful-editor-popup .roomful-form-input textarea {
     width: 524px;
     height: 60px;
     border: none;

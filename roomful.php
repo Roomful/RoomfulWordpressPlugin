@@ -3,9 +3,9 @@
 Plugin Name: Roomful
 Plugin URI: http://github.com/Roomful
 Description: Roomful plugin for wordpress
-Version: 0.0.3
-Author: Dimitriy Kalugin
-Author URI: http://github.com/devinterx
+Version: 0.0.4
+Author: Roomful™
+Author URI: https://roomful.net/
 Text Domain: roomful
 */
 
@@ -23,7 +23,7 @@ function _get_plugin_url()
 function roomful_scripts_enqueue()
 {
 
-    wp_register_style('roomful-frontend', _get_plugin_url() . '/css/roomful.css', array(), '0.0.3');
+    wp_register_style('roomful-frontend', _get_plugin_url() . '/css/roomful.css', array(), '0.0.4');
     wp_enqueue_style('roomful-frontend');
 }
 
@@ -32,8 +32,8 @@ function roomful_editor_scripts_enqueue()
     if (stripos($_SERVER['REQUEST_URI'], 'post.php') === FALSE
         && stripos($_SERVER['REQUEST_URI'], 'post-new.php') === FALSE) return;
 
-    wp_register_script('roomful', _get_plugin_url() . '/js/editor.js', array('jquery'), '0.0.3');
-    wp_register_style('roomful', _get_plugin_url() . '/css/editor.css', array(), '0.0.3');
+    wp_register_script('roomful', _get_plugin_url() . '/js/editor.js', array('jquery'), '0.0.4');
+    wp_register_style('roomful', _get_plugin_url() . '/css/editor.css', array(), '0.0.4');
 
     wp_enqueue_script('roomful');
     wp_enqueue_style('awesome-font', 'https://use.fontawesome.com/releases/v5.1.1/css/all.css', array(), '5.1.1');
@@ -81,7 +81,7 @@ function roomful_shortCode($attributes, $content = '')
             . '" target="_blank" title="Open Roomful" style="'
             . 'width:' . esc_attr($attributes['width']) . 'px;'
             . 'height:' . esc_attr($attributes['height']) . 'px;">'
-            . "<div class=\"roomful-image-cover\" style=\"background: url('https://demo.roomful.co:3443/api/v0/resource/thumbnail/room/" . esc_attr($attributes['room']) . "') 50% 50% / cover no-repeat rgb(241, 237, 231);"
+            . "<div class=\"roomful-image-cover\" style=\"background: url('https://share.roomful.co/room/thumbnail/" . esc_attr($attributes['room']) . "') 50% 50% / cover no-repeat rgb(241, 237, 231);"
             . 'width:' . esc_attr($attributes['width']) . 'px;'
             . 'height:' . esc_attr($attributes['height']) . 'px;"></div>'
             . '<div class="roomful-play-button"><span class="play"><span class="inner-wrap"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600px" height="800px" x="0px" y="0px" viewBox="0 0 600 800" enable-background="new 0 0 600 800" xml:space="preserve"><path fill="none" d="M0-1.79v800L600,395L0-1.79z"></path></svg></span></span></div><div class="roomful-image-logo"></div></a>';

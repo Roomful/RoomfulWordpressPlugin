@@ -17,14 +17,14 @@
             <div class="roomful-row">
 
                 <div class="roomful-col">
-                    <div class="input-field url">
-                        <label class="input-group" for="roomful-url">
-                                <span class="input-group-prepend">
-                                    <span class="input-group-text">Url</span>
+                    <div class="roomful-input-field url">
+                        <label class="roomful-input-group" for="roomful-url">
+                                <span class="roomful-input-group-prepend">
+                                    <span class="roomful-input-group-text">Url</span>
                                 </span>
-                            <span class="input-hint">Url to the shared room, example: https://my.roomful.net/#/room/55mx098565068t</span>
-                            <span class="form-input">
-                                    <input type="text" class="form-control" id="roomful-url"
+                            <span class="roomful-input-hint">Url to the shared room, example: https://my.roomful.net/#/room/55mx098565068t</span>
+                            <span class="roomful-form-input">
+                                    <input type="text" class="roomful-form-control" id="roomful-url"
                                            placeholder="https://my.roomful.net/#/room/55mx098565068t"/>
                                 </span>
                         </label>
@@ -36,34 +36,34 @@
             <div class="roomful-row options-1 size-input">
 
                 <div class="roomful-col">
-                    <div class="input-field width">
-                        <label class="input-group" for="roomful-width">
-                                <span class="input-group-prepend">
-                                    <span class="input-group-text">Width</span>
+                    <div class="roomful-input-field width">
+                        <label class="roomful-input-group" for="roomful-width">
+                                <span class="roomful-input-group-prepend">
+                                    <span class="roomful-input-group-text">Width</span>
                                 </span>
-                            <span class="input-hint">Frame width in px</span>
-                            <span class="form-input">
-                                    <input type="number" class="form-control" id="roomful-width" placeholder="960"/>
+                            <span class="roomful-input-hint">Frame width in px</span>
+                            <span class="roomful-form-input">
+                                    <input type="number" class="roomful-form-control" id="roomful-width" placeholder="960"/>
                                 </span>
-                            <span class="input-group-after">
-                                    <span class="input-group-text">px</span>
+                            <span class="roomful-input-group-after">
+                                    <span class="roomful-input-group-text">px</span>
                                 </span>
                         </label>
                     </div>
                 </div>
 
                 <div class="roomful-col">
-                    <div class="input-field height">
-                        <label class="input-group" for="roomful-height">
-                                <span class="input-group-prepend">
-                                    <span class="input-group-text">Height</span>
+                    <div class="roomful-input-field height">
+                        <label class="roomful-input-group" for="roomful-height">
+                                <span class="roomful-input-group-prepend">
+                                    <span class="roomful-input-group-text">Height</span>
                                 </span>
-                            <span class="input-hint">Frame height in px</span>
-                            <span class="form-input">
-                                    <input type="number" class="form-control" id="roomful-height" placeholder="620"/>
+                            <span class="roomful-input-hint">Frame height in px</span>
+                            <span class="roomful-form-input">
+                                    <input type="number" class="roomful-form-control" id="roomful-height" placeholder="620"/>
                                 </span>
-                            <span class="input-group-after">
-                                    <span class="input-group-text">px</span>
+                            <span class="roomful-input-group-after">
+                                    <span class="roomful-input-group-text">px</span>
                                 </span>
                         </label>
                     </div>
@@ -74,14 +74,14 @@
             <div class="roomful-row options-1 anchor-input" style="display: none;">
 
                 <div class="roomful-col">
-                    <div class="input-field anchor">
-                        <label class="input-group" for="roomful-anchor">
-                                <span class="input-group-prepend">
-                                    <span class="input-group-text">Text</span>
+                    <div class="roomful-input-field anchor">
+                        <label class="roomful-input-group" for="roomful-anchor">
+                                <span class="roomful-input-group-prepend">
+                                    <span class="roomful-input-group-text">Text</span>
                                 </span>
-                            <span class="input-hint">The text, to show it in the link</span>
-                            <span class="form-input">
-                                    <input type="text" class="form-control" id="roomful-anchor"/>
+                            <span class="roomful-input-hint">The text, to show it in the link</span>
+                            <span class="roomful-form-input">
+                                    <input type="text" class="roomful-form-control" id="roomful-anchor"/>
                                 </span>
                         </label>
                     </div>
@@ -92,40 +92,40 @@
             <div class="roomful-row options-2">
 
                 <div class="roomful-col">
-                    <div class="input-field switch-autoplay">
-                            <span class="input-group-prepend">
-                                <span class="input-group-text">Autoplay</span>
+                    <div class="roomful-input-field switch-autoplay">
+                            <span class="roomful-input-group-prepend">
+                                <span class="roomful-input-group-text">Autoplay</span>
                             </span>
-                        <span class="input-hint">Autoplay on load</span>
-                        <label class="switch input-group" for="roomful-autoplay-switch">
+                        <span class="roomful-input-hint">Autoplay on load</span>
+                        <label class="switch roomful-input-group" for="roomful-autoplay-switch">
                             <input type="checkbox" id="roomful-autoplay-switch">
-                            <span class="slider round"></span>
+                            <span class="roomful-slider round"></span>
                         </label>
                     </div>
                 </div>
 
                 <div class="roomful-col">
-                    <div class="input-field switch-auth">
-                            <span class="input-group-prepend">
-                                <span class="input-group-text">Need auth</span>
+                    <div class="roomful-input-field switch-auth">
+                            <span class="roomful-input-group-prepend">
+                                <span class="roomful-input-group-text">Need auth</span>
                             </span>
-                        <span class="input-hint">Need auth at start?</span>
-                        <label class="switch input-group" for="roomful-auth-switch">
+                        <span class="roomful-input-hint">Need auth at start?</span>
+                        <label class="switch roomful-input-group" for="roomful-auth-switch">
                             <input type="checkbox" id="roomful-auth-switch">
-                            <span class="slider round"></span>
+                            <span class="roomful-slider round"></span>
                         </label>
                     </div>
                 </div>
 
                 <div class="roomful-col">
-                    <div class="input-field switch-video-chat">
-                            <span class="input-group-prepend">
-                                <span class="input-group-text">Video Chat</span>
+                    <div class="roomful-input-field switch-video-chat">
+                            <span class="roomful-input-group-prepend">
+                                <span class="roomful-input-group-text">Video Chat</span>
                             </span>
-                        <span class="input-hint">Auto join to video chat</span>
-                        <label class="switch input-group" for="roomful-chat-switch">
+                        <span class="roomful-input-hint">Auto join to video chat</span>
+                        <label class="switch roomful-input-group" for="roomful-chat-switch">
                             <input type="checkbox" id="roomful-chat-switch">
-                            <span class="slider round"></span>
+                            <span class="roomful-slider round"></span>
                         </label>
                     </div>
                 </div>
@@ -134,14 +134,14 @@
             <div class="roomful-row">
 
                 <div class="roomful-col">
-                    <div class="input-field youtube">
-                        <label class="input-group" for="roomful-youtube">
-                                <span class="input-group-prepend">
-                                    <span class="input-group-text">Youtube</span>
+                    <div class="roomful-input-field youtube">
+                        <label class="roomful-input-group" for="roomful-youtube">
+                                <span class="roomful-input-group-prepend">
+                                    <span class="roomful-input-group-text">Youtube</span>
                                 </span>
-                            <span class="input-hint">Youtube video link, to show it on the loader</span>
-                            <span class="form-input">
-                                    <input type="text" class="form-control" id="roomful-youtube"/>
+                            <span class="roomful-input-hint">Youtube video link, to show it on the loader</span>
+                            <span class="roomful-form-input">
+                                    <input type="text" class="roomful-form-control" id="roomful-youtube"/>
                                 </span>
                         </label>
                     </div>
