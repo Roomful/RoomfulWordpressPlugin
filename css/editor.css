@@ -290,7 +290,7 @@
 }
 
 #roomful-editor-popup .roomful-row.options-1 {
-    margin-left: 100px;
+    margin-left: 12px;
 }
 
 #roomful-editor-popup .roomful-row.options-1.anchor-input {
@@ -473,4 +473,59 @@
     border-radius: 0;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
+}
+
+#roomful-editor-popup .roomful-input-select {
+    appearance: none;
+    position: relative;
+    display: flex;
+    flex: 1;
+    width: 86px;
+    height: 33px;
+    background: #fff;
+    overflow: hidden;
+    border: none;
+    border-radius: 2px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    color: #555;
+    text-align: center;
+    outline: 0;
+    cursor: pointer;
+    box-shadow: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+}
+
+#roomful-editor-popup .roomful-input-select::-ms-expand {
+    display: none;
+}
+
+#roomful-editor-popup .roomful-input-select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #34495e;
+    cursor: pointer;
+    pointer-events: none;
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
+}
+
+#roomful-editor-popup .roomful-input-select:hover::after {
+    color: #f39c12;
+}
+
+#roomful-editor-popup .roomful-input-field.layout {
+    width: 156px;
+}
+
+#roomful-editor-popup .roomful-input-field.layout .roomful-input-hint {
+    width: 132px;
 }

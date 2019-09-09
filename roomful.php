@@ -3,7 +3,7 @@
 Plugin Name: Roomful
 Plugin URI: http://github.com/Roomful
 Description: Roomful plugin for wordpress
-Version: 0.0.4
+Version: 0.0.5
 Author: Roomful™
 Author URI: https://roomful.net/
 Text Domain: roomful
@@ -23,7 +23,7 @@ function _get_plugin_url()
 function roomful_scripts_enqueue()
 {
 
-    wp_register_style('roomful-frontend', _get_plugin_url() . '/css/roomful.css', array(), '0.0.4');
+    wp_register_style('roomful-frontend', _get_plugin_url() . '/css/roomful.css', array(), '0.0.5');
     wp_enqueue_style('roomful-frontend');
 }
 
@@ -32,8 +32,8 @@ function roomful_editor_scripts_enqueue()
     if (stripos($_SERVER['REQUEST_URI'], 'post.php') === FALSE
         && stripos($_SERVER['REQUEST_URI'], 'post-new.php') === FALSE) return;
 
-    wp_register_script('roomful', _get_plugin_url() . '/js/editor.js', array('jquery'), '0.0.4');
-    wp_register_style('roomful', _get_plugin_url() . '/css/editor.css', array(), '0.0.4');
+    wp_register_script('roomful', _get_plugin_url() . '/js/editor.js', array('jquery'), '0.0.5');
+    wp_register_style('roomful', _get_plugin_url() . '/css/editor.css', array(), '0.0.5');
 
     wp_enqueue_script('roomful');
     wp_enqueue_style('awesome-font', 'https://use.fontawesome.com/releases/v5.1.1/css/all.css', array(), '5.1.1');
@@ -51,6 +51,7 @@ function roomful_shortCode($attributes, $content = '')
             'height' => 620,
             'autoPlay' => 'false',
             'autoChat' => 'false',
+            'layout' => 'inner',
             'needAuth' => 'false',
             'isLight' => 'true',
             'ytVideo' => '',
@@ -61,6 +62,7 @@ function roomful_shortCode($attributes, $content = '')
     if ($attributes['autoPlay'] !== 'false') $query .= (($query === '') ? '?' : '&') . 'autoplay=1';
     if ($attributes['needAuth'] !== 'false') $query .= (($query === '') ? '?' : '&') . 'auth=1';
     if ($attributes['ytVideo'] !== '') $query .= (($query === '') ? '?' : '&') . 'v=' . esc_attr($attributes['ytVideo']);
+    if ($attributes['layout'] !== '') $query .= (($query === '') ? '?' : '&') . 'layout=' . esc_attr($attributes['layout']);
     if ($attributes['host'] !== 'my' && $attributes['isLight'] === 'true') {
         $query .= (($query === '') ? '?' : '&') . 'light=1';
     } else if ($attributes['host'] === 'my' && $attributes['isLight'] === 'false') {
@@ -146,5 +148,5 @@ add_action('admin_footer', 'roomful_insert_popup', 100);
 add_action('media_buttons', 'roomful_add_media_button', 10);
 
 add_shortcode('roomful', 'roomful_shortCode');
-wp_embed_register_handler('roomful', '#^https:\/\/(:?my|beta|omega|zeta)\.roomful\.net(.+)$#i', 'wp_embed_handler_roomful');
+wp_embed_register_handler('roomful', '#^https:\/\/(:?my|beta|omega|zeta|tau)\.roomful\.net(.+)$#i', 'wp_embed_handler_roomful');
 ?>

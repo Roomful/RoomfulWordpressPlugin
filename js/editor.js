@@ -7,6 +7,7 @@
     this.width = 960;
     this.height = 620;
     this.ytVideo = '';
+    this.layout = 'inner';
     this.embedCode = '';
     this.shortCode = '';
     this.anchorText = 'Go to Roomful';
@@ -62,6 +63,7 @@ RoomfulEditor.prototype.generateFrameCode = function () {
 
     if (this.autoPlay) query += ((query === '') ? '?' : '&') + 'autoplay=1';
     if (this.needAuth) query += ((query === '') ? '?' : '&') + 'auth=1';
+    if (this.layout) query += ((query === '') ? '?' : '&') + 'layout=' + this.layout;
     if (this.ytVideo !== '') query += ((query === '') ? '?' : '&') + 'v=' + this.ytVideo;
     if (this.host !== 'my.roomful.net') query += ((query === '') ? '?' : '&') + 'light=1';
 
@@ -70,8 +72,6 @@ RoomfulEditor.prototype.generateFrameCode = function () {
 
     this.embedCode = 'https://' + this.host + '/' + (query !== '' ? query + '/' : '')
         + '#/room/' + this.room + (this.autoChat ? '/chat' : '');
-
-    console.warn(this.type);
 
     this.shortCode = '[roomful'
         + (this.type === 'image' ? ' type="image"' : '')
@@ -82,6 +82,7 @@ RoomfulEditor.prototype.generateFrameCode = function () {
         + (this.needAuth ? ' needAuth="true"' : '')
         + (this.autoChat ? ' autoChat="true"' : '')
         + (this.ytVideo ? ' ytVideo="' + this.ytVideo + '"' : '')
+        + (this.layout ? ' layout="' + this.layout + '"' : '')
         + (this.type !== 'text' ? (' width="' + this.width + '"') : '')
         + (this.type !== 'text' ? (' height="' + this.height + '"') : '')
         + ']' + (this.type === 'text' ? this.anchorText + '[/roomful]' : '');
@@ -90,21 +91,23 @@ RoomfulEditor.prototype.generateFrameCode = function () {
 RoomfulEditor.prototype.update = function () {
     this.code = this.generateFrameCode();
 
-    jQuery('#roomful-embed-code').value = this.embedCode;
-    jQuery('#roomful-short-code').value = this.shortCode;
+    jQuery('#roomful-embed-code').val(this.embedCode);
+    jQuery('#roomful-short-code').val(this.shortCode);
 };
 
 RoomfulEditor.OnOpenModalWindow = function () {
     RoomfulEditor.resizeModalAsync();
 
-    jQuery('#roomful-width').value = this.width;
-    jQuery('#roomful-height').value = this.height;
+    jQuery('#roomful-width').val(this.width);
+    jQuery('#roomful-height').val(this.height);
 
-    jQuery('#roomful-anchor')[0].value = this.anchorText;
+    jQuery('#roomful-anchor').val(this.anchorText);
 
-    jQuery('#roomful-autoplay-switch').checked = this.autoPlay;
-    jQuery('#roomful-auth-switch').checked = this.needAuth;
-    jQuery('#roomful-chat-switch').checked = this.autoChat;
+    jQuery('#roomful-layout').val(this.layout);
+
+    jQuery('#roomful-autoplay-switch').prop('checked', this.autoPlay);
+    jQuery('#roomful-auth-switch').prop('checked', this.needAuth);
+    jQuery('#roomful-chat-switch').prop('checked', this.autoChat);
 
     $('#roomful-editor-popup').removeClass('image').removeClass('iframe').removeClass('text').addClass(this.type);
 
@@ -153,13 +156,19 @@ jQuery(document).on('ready', function () {
 
     jQuery(document.body).on('change', '#roomful-width', function (event) {
         event.preventDefault();
-        this.width = jQuery('#roomful-width').value;
+        this.width = jQuery('#roomful-width').val();
         this.update();
     }.bind(roomful));
 
     jQuery(document.body).on('change', '#roomful-height', function (event) {
         event.preventDefault();
-        this.height = jQuery('#roomful-height').value;
+        this.height = jQuery('#roomful-height').val();
+        this.update();
+    }.bind(roomful));
+
+    jQuery(document.body).on('change', '#roomful-layout', function (event) {
+        event.preventDefault();
+        this.layout = jQuery('#roomful-layout').val();
         this.update();
     }.bind(roomful));
 
@@ -185,17 +194,17 @@ jQuery(document).on('ready', function () {
 
     jQuery(document.body).on('change', '#roomful-autoplay-switch', function (event) {
         event.preventDefault();
-        this.autoPlay = jQuery('#roomful-autoplay-switch').checked;
+        this.autoPlay = jQuery('#roomful-autoplay-switch').prop('checked');
         this.update();
     }.bind(roomful));
 
     jQuery(document.body).on('change', '#roomful-auth-switch', function (event) {
         event.preventDefault();
 
-        this.needAuth = jQuery('#roomful-auth-switch').checked;
+        this.needAuth = jQuery('#roomful-auth-switch').prop('checked');
 
         if (this.needAuth === false && this.autoChat === true) {
-            jQuery('#roomful-auth-switch').checked = true;
+            jQuery('#roomful-auth-switch').prop('checked', true);
         } else {
             this.update();
         }
@@ -204,11 +213,11 @@ jQuery(document).on('ready', function () {
 
     jQuery(document.body).on('change', '#roomful-chat-switch', function (event) {
         event.preventDefault();
-        this.autoChat = jQuery('#roomful-chat-switch').checked;
+        this.autoChat = jQuery('#roomful-chat-switch').prop('checked');
 
         if (this.autoChat === true && this.needAuth === false) {
             this.needAuth = true;
-            jQuery('#roomful-auth-switch').checked = true;
+            jQuery('#roomful-auth-switch').prop('checked', true);
         }
 
         this.update();
@@ -232,7 +241,7 @@ jQuery(document).on('ready', function () {
         try {
             var needUpdate = false;
 
-            var value = jQuery('#roomful-url').value;
+            var value = jQuery('#roomful-url').val();
 
             if (value.trim() === '') {
                 this.room = '55mx098565068t';
@@ -269,7 +278,7 @@ jQuery(document).on('ready', function () {
     jQuery(document.body).on('change', '#roomful-youtube', function (event) {
         event.preventDefault();
 
-        var url = jQuery('#roomful-youtube').value;
+        var url = jQuery('#roomful-youtube').val();
         try {
             var needUpdate = false;
             var m = url.match(/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/);
@@ -290,7 +299,7 @@ jQuery(document).on('ready', function () {
     jQuery(document.body).on('change', '#roomful-anchor', function (event) {
         event.preventDefault();
 
-        var text = jQuery('#roomful-anchor')[0].value;
+        var text = jQuery('#roomful-anchor').val();
         console.log(text);
         try {
             var needUpdate = false;
